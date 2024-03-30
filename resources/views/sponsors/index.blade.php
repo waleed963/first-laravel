@@ -42,7 +42,8 @@
                       <td>{{$sponsor->samount}}</td>
                       <td>{{$sponsor->sphonenumber}}</td>
                       <td>{{$sponsor->slast-damount}}</td>
-                      <td>{{$sponsor->}}</td>
+                      <td>{{$sponsor->from-date}}</td>
+                      <td>{{$sponsor->to-date}}</td>
                       <td>{{$sponsor->snote}}</td>
                       <td >
                         <div class="row">

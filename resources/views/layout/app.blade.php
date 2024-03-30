@@ -1,8 +1,17 @@
 
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="ar">
+  <head >
     <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>الكفيل | @yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -42,270 +51,71 @@
     <![endif]-->
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
+ 
       <div class="wrapper">
 
         <header class="main-header">
 
           <!-- Logo -->
-          <a href="index2.html" class="logo">
+          <a href="" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><b>W</b>AL</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>الوليد</b> لكفالة اليتيم</span>
+            <span class="logo-lg"><b>{{__('words.Al-Walid')}}</b> {{__('words.to_sponsor_an_orphan')}} </span>
           </a>
 
           <!-- Header Navbar: style can be found in header.less -->
-          <nav class="navbar navbar-static-top ">
-            <!-- Sidebar toggle button-->
+          <nav class=" navbar navbar-static-top navbar-expand-md shadow-sm ">
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
               <span class="sr-only">Toggle navigation</span>
             </a>
-            <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
               <ul class="nav navbar-nav">
-                <!-- Messages: style can be found in dropdown.less-->
-                <li class="dropdown messages-menu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="label label-success">4</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">You have 4 messages</li>
-                    <li>
-                      <!-- inner menu: contains the actual data -->
-                      <ul class="menu">
-                        <li><!-- start message -->
-                          <a href="#">
-                            <div class="pull-left">
-                              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                            </div>
-                            <h4>
-                              Support Team
-                              <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                          </a>
-                        </li>
-                        <!-- end message -->
-                        <li>
-                          <a href="#">
-                            <div class="pull-left">
-                              <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                            </div>
-                            <h4>
-                              AdminLTE Design Team
-                              <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <div class="pull-left">
-                              <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                            </div>
-                            <h4>
-                              Developers
-                              <small><i class="fa fa-clock-o"></i> Today</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <div class="pull-left">
-                              <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
-                            </div>
-                            <h4>
-                              Sales Department
-                              <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <div class="pull-left">
-                              <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
-                            </div>
-                            <h4>
-                              Reviewers
-                              <small><i class="fa fa-clock-o"></i> 2 days</small>
-                            </h4>
-                            <p>Why not buy a new awesome theme?</p>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="footer"><a href="#">See All Messages</a></li>
-                  </ul>
-                </li>
-                <!-- Notifications: style can be found in dropdown.less -->
-                <li class="dropdown notifications-menu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-bell-o"></i>
-                    <span class="label label-warning">10</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">You have 10 notifications</li>
-                    <li>
-                      <!-- inner menu: contains the actual data -->
-                      <ul class="menu">
-                        <li>
-                          <a href="#">
-                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                            page and may cause design problems
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="fa fa-users text-red"></i> 5 new members joined
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="fa fa-user text-red"></i> You changed your username
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="footer"><a href="#">View all</a></li>
-                  </ul>
-                </li>
-                <!-- Tasks: style can be found in dropdown.less -->
-                <li class="dropdown tasks-menu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-flag-o"></i>
-                    <span class="label label-danger">9</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li class="header">You have 9 tasks</li>
-                    <li>
-                      <!-- inner menu: contains the actual data -->
-                      <ul class="menu">
-                        <li><!-- Task item -->
-                          <a href="#">
-                            <h3>
-                              Design some buttons
-                              <small class="pull-right">20%</small>
-                            </h3>
-                            <div class="progress xs">
-                              <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">20% Complete</span>
-                              </div>
-                            </div>
-                          </a>
-                        </li>
-                        <!-- end task item -->
-                        <li><!-- Task item -->
-                          <a href="#">
-                            <h3>
-                              Create a nice theme
-                              <small class="pull-right">40%</small>
-                            </h3>
-                            <div class="progress xs">
-                              <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">40% Complete</span>
-                              </div>
-                            </div>
-                          </a>
-                        </li>
-                        <!-- end task item -->
-                        <li><!-- Task item -->
-                          <a href="#">
-                            <h3>
-                              Some task I need to do
-                              <small class="pull-right">60%</small>
-                            </h3>
-                            <div class="progress xs">
-                              <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">60% Complete</span>
-                              </div>
-                            </div>
-                          </a>
-                        </li>
-                        <!-- end task item -->
-                        <li><!-- Task item -->
-                          <a href="#">
-                            <h3>
-                              Make beautiful transitions
-                              <small class="pull-right">80%</small>
-                            </h3>
-                            <div class="progress xs">
-                              <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">80% Complete</span>
-                              </div>
-                            </div>
-                          </a>
-                        </li>
-                        <!-- end task item -->
-                      </ul>
-                    </li>
-                    <li class="footer">
-                      <a href="#">View all tasks</a>
-                    </li>
-                  </ul>
-                </li>
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                    <span class="hidden-xs">میثم جعفری</span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <!-- User image -->
-                    <li class="user-header">
-                      <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
 
-                      <p>
-                        Alexander Pierce - Web Developer
-                        <small>Member since Nov. 2012</small>
-                      </p>
-                    </li>
-                    <!-- Menu Body -->
-                    <li class="user-body">
-                      <div class="row">
-                        <div class="col-xs-4 text-center">
-                          <a href="#">Followers</a>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                          <a href="#">Sales</a>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                          <a href="#">Friends</a>
-                        </div>
-                      </div>
-                      <!-- /.row -->
-                    </li>
-                    <!-- Menu Footer-->
-                    <li class="user-footer">
-                      <div class="pull-left">
-                        <a href="#" class="btn btn-default btn-flat">Profile</a>
-                      </div>
-                      <div class="pull-right">
-                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-                <!-- Control Sidebar Toggle Button -->
-                <li>
-                  <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                        
               </ul>
             </div>
-
-          </nav>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="@if(app()->getLocale() == 'ar') {{ url('lang/en') }} @else {{ url('lang/ar') }} @endif" class="nav-link">
+                @if(app()->getLocale() == 'ar')
+                  EN
+                @else
+                  AR
+                @endif
+              </a>
+            </li>
+          </nav> 
         </header>
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar direction ">
@@ -314,7 +124,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
               <div class="pull-right image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
               </div>
               <div class="pull-right info">
                 <p>میثم جعفری</p>
@@ -335,56 +145,54 @@
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu ">
-              <li class="treeview">
-                <a href="/">
-                  <i class="fa fa-dashboard"></i> <span>الصفحة الرئيسية</span>
+              <li class="treeview {{'/' == request()->path() ? 'active' : '' }}">
+                <a href="/dashboard">
+                  <i class="fa fa-dashboard"></i> <span>{{__('words.Dashboard')}}</span>
                 </a>
               </li>
-              <li class="treeview">
-                <a href="{{ route('orphans.index') }}">
-                  <i class="fa fa-table"></i> <span>الأيتام</span>
+              <li class="treeview {{'orphans' == request()->path() ? 'active' : '' }}">
+                <a href="{{ route('orphans.index') }}" class="nav-link">
+                  <i class="fa fa-group"></i> <span> @lang('words.Orphans')</span>
                 </a>
               </li>
-
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-table "></i> <span>الكفلاء</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="pages/calendar.html">
-                  <i class="fa fa-calendar"></i> <span>توزيع الكفالة</span>
+              <li class="treeview {{'bails' == request()->path() ? 'active' : '' }}">
+                <a href="{{ route('bails.index') }}">
+                  <i class="fa fa-money"></i> <span> {{__('words.Bails')}} </span>
                 </a>
               </li>
 
-              <li>
-                <a href="pages/calendar.html">
-                  <i class="fa fa-calendar"></i> <span>توزيع عينية</span>
+              <li class="treeview {{'' == request()->path() ? 'active' : '' }}">
+                <a href="">
+                  <i class="fa fa-eye"></i> <span> {{__('words.Distributions')}} </span>
                 </a>
               </li>
 
-              <li>
-                <a href="pages/calendar.html">
-                  <i class="fa fa-calendar"></i> <span>تبرعات</span>
+              <li class="treeview {{'' == request()->path() ? 'active' : '' }}">
+                <a href="">
+                  <i class="fa fa-hand-peace-o"></i> <span> {{__('words.Donations')}} </span>
                 </a>
               </li>
 
-              <li>
-                <a href="documentation/index.html">
-                  <i class="fa fa-book"></i> <span>وصفات طبية</span>
+              <li class="treeview {{'' == request()->path() ? 'active' : '' }}">
+                <a href="">
+                  <i class="fa fa-book"></i> <span > {{__('words.Prescription')}} </span>
                 </a>
               </li>
 
-              <li>
-                <a href="pages/calendar.html">
-                  <i class="fa fa-calendar"></i> <span>تبرعات</span>
+              <li class="treeview {{'' == request()->path() ? 'active' : '' }}">
+                <a href="">
+                  <i class="fa fa-bank"></i> <span> {{__('words.Financial_Fund')}} </span>
+                </a>
+              </li class="treeview {{'' == request()->path() ? 'active' : '' }}">
+
+              <li class="treeview {{'#exampleModalCenter' == request()->path() ? 'active' : '' }}">
+                <a href="" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                  <i class="fa fa-edit"></i> <span> {{__('words.Add_New')}} </span>
                 </a>
               </li>
-
-              <li>
-                <a href="documentation/index.html">
-                  <i class="fa fa-book"></i> <span>وصفات طبية</span>
+              <li class="treeview {{'users' == request()->path() ? 'active' : '' }}">
+                <a href="{{ route('users.index') }}">
+                  <i class="fa fa-user"></i> <span> {{__('words.Users')}} </span>
                 </a>
               </li>
             
@@ -392,13 +200,12 @@
           </section>
           <!-- /.sidebar -->
         </aside>
-
+                  
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              Dashboard
             </h1>
           </section>
             <div class="body">
@@ -471,5 +278,26 @@
             });
           });
       </script>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header direction">
+                <h5 class="modal-title" id="exampleModalLongTitle"> إضافة جديد </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body d-inline-block  justify-content-center align-items-center ">
+              <a href="{{route('users.create')}}" type="button" class="btn btn-warning mr-auto p-2 "> إضافة مستخدم </a>
+              <a href="{{route('orphans.create')}}" type="button" class="btn btn-primary ml-auto p-2 "> إضافة أيتام </a>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"> إغلاق </button>
+              </div>
+            </div>
+          </div>
+        </div>
   </body>
 </html>

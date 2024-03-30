@@ -3,120 +3,182 @@
 
 @section('content')
 
-<!-- general form elements disabled -->
+<!-- general form elements -->
 <section class="content">
 
-    <div class="box box-warning">
+    <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title"> إدخال يتيم جديد </h3>
+            <h3 class="box-title"> {{__('words.')}} </h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
             <form  action="{{route('orphans.store')}}" method="post" >
                 @csrf
                 <div class="row">
-                                <!-- Start left column -->
-                                <div class="col-md-6">
-                                    <div class="box-body">
-                                                <div class="form-group">
-                                                    <label for="name"> اسم اليتيم </label>
-                                                    <input type="text" name="orphan-name" class="form-control" id="name" value="{{old('orphan-name')}}" placeholder=" اسم اليتيم ">
-                                                    @error('orphan-name')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="guardian"> اسم الوصي </label>
-                                                    <input type="text" name="guardian-name" class="form-control"  value="{{old('guardian-name')}}" id="guardian" placeholder=" اسم الوصي ">
-                                                    @error('guardian-name')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="sponsor"> اسم الكفيل </label>
-                                                    <input type="text" name="sponsor-name" class="form-control"  value="{{old('$orphan->sponsor->sponsor-name')}}" id="sponsor" placeholder=" اسم الكفيل ">
-                                                    @error('sponsor-name')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="date"> تاريخ الولادة </label>
-                                                    <input type="date" name="date" class="form-control" value="{{old('date')}}" id="date" placeholder=" تاريخ الولادة ">
-                                                    @error('date')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="amount"> مبلغ الكفالة </label>
-                                                    <input type="number" name="oamount" class="form-control" value="{{old('oamount')}}" id="amount" placeholder=" مبلغ الكفالة ">
-                                                    @error('oamount')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-                                                </div>
+                    <!-- Start left column -->
+                    <div class="box-body">
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                    <label for="sponsorname"> {{__('words.Name_of_sponsor')}}</label>
+                                        <input type="text" name="sponsorname" class="form-control"  value="{{old('sponsorname')}}" id="sponsorname" placeholder=" {{__('words.Name_of_sponsor')}}">
+                                        @error('sponsorname')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="sphonenumber"> {{__('words.phone_number_of_sponsor')}}</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
                                     </div>
+                                    <input type="number" name="sphonenumber" class="form-control" value="{{old('sphonenumber')}}" id="sphonenumber" placeholder="  {{__('words.phone_number_of_sponsor')}}">
+                                        @error('sphonenumber')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                        @enderror
                                 </div>
-                                <!--End left column-->
-                                <!--Start right column-->
-                                <div class="col-md-6">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label for="card_id"> رقم البطاقة </label>
-                                            <input type="number" name="card-id" class="form-control" value="{{old('card-id')}}" id="card_id" placeholder=" رقم البطاقة ">
-                                                    @error('card-id')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="slastdamount"> {{__('words.Last_payment_date')}}</label>
+                                <input type="date" name="slastdamount" class="form-control" value="{{old('slastdamount')}}" id="slastdamount" placeholder=" {{__('words.Last_payment_date')}}">
+                                @error('slastdamount')
+                                        <div class="form-error">
+                                            {{$message}}
                                         </div>
-                                        <div class="form-group">
-                                            <label for="last_amount"> آخر تاريخ للدفع </label>
-                                            <input type="date" name="olast-damount" class="form-control" value="{{old('olast-damount')}}" id="last_amount" placeholder=" آخر تاريخ للدفع ">
-                                            @error('olast-damount')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phonenumber"> الهاتف </label>
-                                                <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-phone"></i>
-                                                        </div>
-                                                        <input type="number" name="ophonenumber" class="form-control" value="{{old('ophonenumber')}}" id="phonenumber" placeholder=" الهاتف ">
-                                                        @error('ophonenumber')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
+                                        @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="fromdate"> {{__('words.Beginning_of_the_sponsorship')}}</label>
+                                            <input type="date" name="fromdate" class="form-control" value="{{old('fromdate')}}" id="fromdate" placeholder=" {{__('words.Beginning_of_the_sponsorship')}}">
+                                            @error('fromdate')
+                                                <div class="form-error">
+                                                    {{$message}}
                                                 </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="note"> ملاحظات </label>
-                                            <input type="text" name="onote" class="form-control" value="{{old('onote')}}" id="note" placeholder=" ملاحظات ">
-                                            @error('onote')
-                                                    <div class="form-error">
-                                                        {{$message}}
-                                                    </div>
-                                                    @enderror
-                                        </div>
+                                            @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="snote"> {{__('words.Notes_to_the_sponsor')}}</label>
+                                    <input type="text" name="snote" class="form-control" value="{{old('snote')}}" id="snote" placeholder=" {{__('words.Notes_to_the_sponsor')}}">
+                                @error('snote')
+                                    <div class="form-error">
+                                        {{$message}}
                                     </div>
-                                    <!--End right column-->
-                                <div>
-                                    <!-- submit button-->
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <!--End left column-->
+                        <!--Start center column-->
+                        <div class="col-lg-4 col-md-6 col-sm-12 ">
+                            <div class="form-group">
+                                    <label for="orphanname"> {{__('words.Orphan_name')}}</label>
+                                        <input type="text" name="orphanname" class="form-control" id="orphanname" value="{{old('orphanname')}}" placeholder=" {{__('words.Orphan_name')}}">
+                                    @error('orphanname')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                            </div>
+                            <div class="form-group">
+                                    <label for="dateofbirth"> {{__('words.Birth_date')}}</label>
+                                        <input type="date" name="dateofbirth" class="form-control" value="{{old('dateofbirth')}}" id="dateofbirth" placeholder=" {{__('words.Birth_date')}}">
+                                    @error('dateofbirth')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                            </div>
+                            <div class="form-group">
+                                    <label for="oamount"> {{__('words.Sponsorship_amount_for_the_orphan')}}</label>
+                                        <input type="number" name="oamount" class="form-control" value="{{old('oamount')}}" id="oamount" placeholder=" {{__('words.Sponsorship_amount_for_the_orphan')}}">
+                                    @error('oamount')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                            </div>
+                            <div class="form-group">
+                                    <label for="todate"> {{__('words.End_of_warranty')}}</label>
+                                        <input type="date" name="todate" class="form-control" value="{{old('todate')}}" id="todate" placeholder=" {{__('words.End_of_warranty')}}">
+                                        @error('todate')
+                                            <div class="form-error">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                            </div>
+                            <div class="form-group">
+                                    <label for="onote"> {{__('words.Notes_for_the_orphan')}}</label>
+                                        <input type="text" name="onote" class="form-control" value="{{old('onote')}}" id="onote" placeholder=" {{__('words.Notes_for_the_orphan')}}">
+                                    @error('onote')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                            </div>
+                        </div>
+                        <!--End center column-->
+                        <!--Start right column-->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                    <label for="guardianname"> {{__('words.Name_of_guardian')}}</label>
+                                        <input type="text" name="guardianname" class="form-control"  value="{{old('guardianname')}}" id="guardianname" placeholder=" {{__('words.Name_of_guardian')}} ">
+                                    @error('guardianname')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                            </div>
+                            <div class="form-group">
+                                    <label for="cardid"> {{__('words.Card_number')}}</label>
+                                        <input type="number" name="cardid" class="form-control" value="{{old('cardid')}}" id="cardid" placeholder=" {{__('words.Card_number')}} ">
+                                    @error('cardid')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                            </div>
+                            <div class="form-group">
+                                    <label for="samount"> {{__('words.The_bail_amount_for_the_guarantor')}} </label>
+                                        <input type="number" name="samount" class="form-control" value="{{old('samount')}}" id="samount" placeholder=" {{__('words.The_bail_amount_for_the_guarantor')}}">
+                                    @error('samount')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                            </div>
+                            <!-- <div class="form-group">
+                                    <label for="olastdamount"> آخر تاريخ استلام </label>
+                                        <input type="date" name="olastdamount" class="form-control" value="{{old('olastdamount')}}" id="olastdamount" placeholder=" آخر تاريخ استلام ">
+                                    @error('olastdamount')
+                                        <div class="form-error">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                            </div> -->
+                            <div class="form-group">
+                                <label for="ophonenumber">  {{__('words.Phone_number_of_orphan')}}</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-phone"></i>
+                                        </div>
+                                        <input type="number" name="ophonenumber" class="form-control" value="{{old('ophonenumber')}}" id="ophonenumber" placeholder="{{__('words.Phone_number_of_orphan')}}">
+                                            @error('ophonenumber')
+                                                <div class="form-error">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
+                                    </div>
+                            </div>
+                        </div>
+                        <!--End right column-->
+                    </div>
+                <div>
+                
+                <!-- submit button-->
+                <div class=" text-center center">
+                    <button type="submit" class="btn btn-primary"> {{__('words.Save')}}</button>
                 </div>
             </form>
         </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Orphan;
+use  App\Models\Bail;
+use App\Http\Controllers\BailsController;
 
 class OrphansController extends Controller
 {
@@ -12,8 +14,18 @@ class OrphansController extends Controller
      */
     public function index()
     {
-        return view('orphans.index')
-        ->with('orphans', Orphan::all());
+
+        $title = 'Orphans';
+        $orphans = Orphan::latest()->Paginate(5);
+        return view('orphans.index', compact('orphans'))
+        ->with('i', (request()->input('page', 1) -1 ) * 5 )
+        ->with('bails', Bail::all());
+
+        //
+        // return view('orphans.index')
+        // ->with('orphans', Orphan::all());
+
+        //
         /*->with('orphans', Orphan::all());*/
     }
 
@@ -32,26 +44,35 @@ class OrphansController extends Controller
     {
 
         $request->validate([
-            'name' => 'required',
-            'guardian' => 'required',
-            'sponsor' => 'required',
-            'date' => 'required',
-            'amount' => ['required','integer' ],
-            'card_id' => ['required','integer' ],
-            'last_amount' => 'required',
-            'phonenumber' => ['required','integer' ],
+            'sponsorname' => 'required',
+            'slastdamount' => 'required',
+            'samount' => ['required','integer' ],
+            'sphonenumber' => ['required','integer' ],
+            'fromdate' => 'required',
+            'todate' => 'required',
+            'orphanname' => 'required',
+            'guardianname' => 'required',
+            'dateofbirth' => 'required',
+            'oamount' => ['required','integer' ],
+            'cardid' => ['required','integer' ],
+            'ophonenumber' => ['required','integer' ],
         ]);
 
         Orphan::create([
-            'name' => $request->input('name'),
-            'guardian' => $request->input('guardian'),
-            'sponsor' => $request->input('sponsor'),
-            'date' => $request->input('date'),
-            'amount' => $request->input('amount'),
-            'card_id' => $request->input('card_id'),
-            'last_amount' => $request->input('last_amount'),
-            'phonenumber' => $request->input('phonenumber'),
-            'note' => $request->input('note'),
+            'sponsorname' => $request->input('sponsorname'),
+            'sphonenumber' => $request->input('sphonenumber'),
+            'slastdamount' => $request->input('slastdamount'),
+            'fromdate' => $request->input('fromdate'),
+            'snote' => $request->input('snote'),
+            'orphanname' => $request->input('orphanname'),
+            'dateofbirth' => $request->input('dateofbirth'),
+            'oamount' => $request->input('oamount'),
+            'todate' => $request->input('todate'),
+            'onote' => $request->input('onote'),
+            'guardianname' => $request->input('guardianname'),
+            'cardid' => $request->input('cardid'),
+            'samount' => $request->input('samount'),
+            'ophonenumber' => $request->input('ophonenumber'),
 
         ]);
         return redirect()->route('orphans.index');
@@ -85,28 +106,36 @@ class OrphansController extends Controller
      */
     public function update(Request $request, string $orphan)
     {
-       //dd($orphan);
-        $request->validate([
-            'name' => 'required',
-            'guardian' => 'required',
-            'sponsor' => 'required',
-            'date' => 'required',
-            'amount' => ['required','integer' ],
-            'card_id' => ['required','integer' ],
-            'last_amount' => 'required',
-            'phonenumber' => ['required','integer' ],
-        ]);
 
+        $request->validate([
+            'sponsorname' => 'required',
+            'slastdamount' => 'required',
+            'samount' => ['required','integer' ],
+            'sphonenumber' => ['required','integer' ],
+            'fromdate' => 'required',
+            'todate' => 'required',
+            'orphanname' => 'required',
+            'guardianname' => 'required',
+            'dateofbirth' => 'required',
+            'oamount' => ['required','integer' ],
+            'cardid' => ['required','integer' ],
+            'ophonenumber' => ['required','integer' ],
+        ]);
         $orphan = Orphan::where('id',$orphan)->update([
-            'name' => $request->input('name'),
-            'guardian' => $request->input('guardian'),
-            'sponsor' => $request->input('sponsor'),
-            'date' => $request->input('date'),
-            'amount' => $request->input('amount'),
-            'card_id' => $request->input('card_id'),
-            'last_amount' => $request->input('last_amount'),
-            'phonenumber' => $request->input('phonenumber'),
-            'note' => $request->input('note'),
+            'sponsorname' => $request->input('sponsorname'),
+            'sphonenumber' => $request->input('sphonenumber'),
+            'slastdamount' => $request->input('slastdamount'),
+            'fromdate' => $request->input('fromdate'),
+            'snote' => $request->input('snote'),
+            'orphanname' => $request->input('orphanname'),
+            'dateofbirth' => $request->input('dateofbirth'),
+            'oamount' => $request->input('oamount'),
+            'todate' => $request->input('todate'),
+            'onote' => $request->input('onote'),
+            'guardianname' => $request->input('guardianname'),
+            'cardid' => $request->input('cardid'),
+            'samount' => $request->input('samount'),
+            'ophonenumber' => $request->input('ophonenumber'),
 
         ]);
         return redirect()->route('orphans.index');

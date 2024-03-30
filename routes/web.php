@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrphansController;
+use App\Http\Controllers\BailsController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\LangController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +18,39 @@ use App\Http\Controllers\OrphansController;
 |
 */
 
+
+Route::get('/lang/{lang}', [LangController::class,'change']);
+
+// Route::prefix('dashboard')->middleware('auth')->group(function () {
+//     Route::get('/', function () {
+//         return view('index');
+//     });
+ 
+//     Route::get('/home', function () {
+//         return view('index');
+//     });
+//     Route::resource('orphans', OrphansController::class);
+//     Route::resource('bails', BailsController::class);
+//     Route::resource('users', UsersController::class);
+// });
 Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/home', function () {
+    return view('index');
+});
 
 Route::resource('orphans', OrphansController::class);
+Route::resource('bails', BailsController::class);
+Route::resource('users', UsersController::class);
 
 
-// Route::put('orphans/{orphan}','OrphansController@update');
+
+
+
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
